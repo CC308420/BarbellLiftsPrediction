@@ -27,6 +27,7 @@ Loading required libraries
 library(caret)
 library(rattle)
 library(rpart)
+library(rpart.plot)
 library(randomForest)
 ```
 
@@ -74,6 +75,7 @@ dim(testing)
 ### Classification Tree
 ```{r}
 modelRPart <- rpart(classe ~ ., method="class", data=training)
+fancyRpartPlot(modelRPart, sub="")
 predRPart <- predict(modelRPart, newdata=testing, type="class")
 confusionMatrix(predRPart, testing$classe)
 ```
